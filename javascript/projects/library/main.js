@@ -17,10 +17,30 @@ addBook("Test Book", "Ryan Lewin", "100", "Read");
 addBook("Another Book", "Mavis Hut", "1000", "Unread");
 addBook("Boring Book", "Bomba Bomb", "450", "Read");
 
-function printBook(book) {
+function renderBook(book) {
     let listItem = document.createElement("P");
     listItem.innerHTML = `${book.title}, ${book.author}, ${book.pages}, ${book.status}`;
     libraryContent.appendChild(listItem);
 }
 
-library.forEach(printBook);
+const newBookBtn = document.getElementById("new-book-btn");
+const newBookForm = document.getElementById("new-book-form");
+const submitBookBtn = document.getElementById("submit-book-btn");
+
+newBookBtn.onclick = function () {
+    newBookForm.style.display = "block";
+    newBookBtn.style.display = "none"
+}
+
+submitBookBtn.onclick = function() {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const status = document.getElementById("status").value;
+    addBook(title, author, pages, status);
+    newBookForm.style.display = "none";
+    newBookBtn.style.display = "block";
+    renderBook(library[library.length - 1]);
+}
+
+library.forEach(renderBook);

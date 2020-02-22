@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Odin Library</title>
 </head>
 <body>
@@ -12,6 +13,26 @@
     <main>
         <div id="library-content">
 
+        </div>
+        <div id="new-book-btn">
+            <button>Add Book</button>
+        </div>
+        <div id="new-book-form">
+            <h3>New Book</h3>
+            <form action="" onsubmit="return false">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" required>
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" required>
+                <label for="pages">Pages</label>
+                <input type="text" name="pages" id="pages" required>
+                <label for="status">Status</label>
+                <select name="status" id="status" required>
+                    <option value="read">Read</option>
+                    <option value="unread">Unread</option>
+                </select>
+                <button id="submit-book-btn">Submit</button>
+            </form>
         </div>
     </main>
     <footer>
