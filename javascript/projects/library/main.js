@@ -26,13 +26,15 @@ addBook("Boring Book", "Bomba Bomb", "450", "Read");
 
 function render(book) {
     const card = document.createElement("div");
-    card.class = "card";
+    card.className = "card-content";
     card.id = `div${book.id}`;
     libraryContent.appendChild(card);
     const info = document.createElement("p");
-    info.innerHTML = `${book.title}, ${book.author}, ${book.pages}, ${book.status}`;
+    info.className = "title is-5"
+    info.innerHTML = `${book.title} by ${book.author}, ${book.pages} Pages | ${book.status}`;
     card.appendChild(info);
     const removeBtn = document.createElement("button");
+    removeBtn.className = "button is-danger is-outlined";
     removeBtn.innerHTML = "Remove Book";
     removeBtn.onclick = function() {
         libraryContent.innerHTML = "";
@@ -41,6 +43,7 @@ function render(book) {
     }
     card.appendChild(removeBtn);
     const statusBtn = document.createElement("button");
+    statusBtn.className = "button is-success is-outlined";
     statusBtn.innerHTML = "Change Status";
     statusBtn.onclick = function() {
         if(book.status === "Read") {
@@ -57,6 +60,12 @@ function render(book) {
 const newBookBtn = document.getElementById("new-book-btn");
 const newBookForm = document.getElementById("new-book-form");
 const submitBookBtn = document.getElementById("submit-book-btn");
+const close = document.getElementById("close");
+
+close.onclick = function() {
+    newBookForm.style.display = "none";
+    newBookBtn.style.display = "block"
+}
 
 newBookBtn.onclick = function () {
     newBookForm.style.display = "block";
@@ -74,5 +83,15 @@ submitBookBtn.onclick = function() {
     libraryContent.innerHTML = "";
     library.forEach(render);
 }
+
+// const close = document.getElementById("close");
+// close.onclick = function() {
+//     newBookForm.display = "none";
+// }
+
+// const closeFormBtns = document.getElementsByClassName("close-form");
+// closeFormBtns.onclick = function() {
+//     newBookForm.style.display = "none";
+// }
 
 library.forEach(render);

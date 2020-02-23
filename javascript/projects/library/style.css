@@ -1,14 +1,19 @@
 html {
     padding: 0;
-    margin: 0;
+    margin: 2vw;
+    display: flex;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #fcfcfc;
+}
+
+#library-content {
+    margin: 2vw;
 }
 
 #new-book-form {
     display: none;
-    background-color: aliceblue;
-    padding: 5vw;
-    border: 1px black solid;
-    width: 45vw;
-    height: auto;
+}
+
+button {
+    margin-right: 1vw;
 }
