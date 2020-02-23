@@ -18,11 +18,11 @@ addBook("Test Book", "Ryan Lewin", "100", "Read");
 addBook("Another Book", "Mavis Hut", "1000", "Unread");
 addBook("Boring Book", "Bomba Bomb", "450", "Read");
 
-function removeBook(id) {
-    libraryContent.innerHTML = "";
-    library.splice(id, 1);
-    library.forEach(render);
-}
+// function removeBook(id) {
+//     libraryContent.innerHTML = "";
+//     library.splice(id, 1);
+//     library.forEach(render);
+// }
 
 function render(book) {
     const card = document.createElement("div");
@@ -34,8 +34,24 @@ function render(book) {
     card.appendChild(info);
     const removeBtn = document.createElement("button");
     removeBtn.innerHTML = "Remove Book";
-    removeBtn.addEventListener("click", removeBook);
+    removeBtn.onclick = function() {
+        libraryContent.innerHTML = "";
+        library.splice(book.id, 1);
+        library.forEach(render);
+    }
     card.appendChild(removeBtn);
+    const statusBtn = document.createElement("button");
+    statusBtn.innerHTML = "Change Status";
+    statusBtn.onclick = function() {
+        if(book.status === "Read") {
+            book.status = "Unread";
+        } else {
+            book.status = "Read";
+        }
+        libraryContent.innerHTML = "";
+        library.forEach(render);
+    }
+    card.appendChild(statusBtn);
 }
 
 const newBookBtn = document.getElementById("new-book-btn");
